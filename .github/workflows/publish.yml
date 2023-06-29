@@ -21,7 +21,7 @@ jobs:
     - run: npm install -g @noodl/noodl-cli
       continue-on-error: true
 
-    - run: noodl-cli build --projectDir . --outFile ./dist
+    - run: noodl-cli build . ./dist
 
     - name: Init new repo in dist folder and commit generated files
       run: |
