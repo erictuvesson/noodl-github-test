@@ -1,5 +1,5 @@
 {
-    "name": "Project Template - Hello World",
+    "name": "github",
     "components": [
         {
             "name": "/App",
@@ -101,16 +101,6 @@
                                 "children": []
                             }
                         ]
-                    },
-                    {
-                        "id": "10fa011a-db2f-e573-47e6-ed69e091fbc1",
-                        "type": "PageInputs",
-                        "x": -248,
-                        "y": -2,
-                        "parameters": {},
-                        "ports": [],
-                        "dynamicports": [],
-                        "children": []
                     }
                 ]
             }
@@ -123,7 +113,6 @@
     "rootNodeId": "246f9453-a119-ac78-171e-3806cf596ecc",
     "version": "4",
     "metadata": {
-        "dbCollections": [],
         "styles": {
             "text": {
                 "Display": {
