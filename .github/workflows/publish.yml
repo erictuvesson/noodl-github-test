@@ -18,7 +18,7 @@ jobs:
       with:
         node-version: '12.x'
 
-    - run: npm install -g @noodl/noodl-cli
+    - run: npm install -g -f @noodl/noodl-cli
     - run: noodl-cli build --projectDir . --outFile ./dist
 
     - name: Init new repo in dist folder and commit generated files
