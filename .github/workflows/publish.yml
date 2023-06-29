@@ -1,0 +1,39 @@
+name: Publish
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+        
+    steps:
+    - name: Checkout 🛎
+      uses: actions/checkout@v2.3.4
+        
+    - name: Setup node
+      uses: actions/setup-node@v2.1.5
+      with:
+        node-version: '12.x'
+
+    - run: npm install -g @noodl/noodl-cli
+    - run: noodl-cli build --projectDir . --outFile ./dist
+
+    - name: Init new repo in dist folder and commit generated files
+      run: |
+        cd src/dist
+        git init
+        git add -A
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m 'deploy'
+
+    - name: Force push to destination branch
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages
+        force: true
+        directory: ./src/dist
