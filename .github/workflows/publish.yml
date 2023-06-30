@@ -20,7 +20,7 @@ jobs:
       with:
         node-version: '16.x'
 
-    - run: npm install -g @noodl/noodl-cli
+    - run: npm install -g @noodl/noodl-cli@beta
       continue-on-error: true
 
     - run: noodl-cli build . ./dist
