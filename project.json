@@ -37,14 +37,6 @@
                                 "ports": [],
                                 "dynamicports": [],
                                 "children": []
-                            },
-                            {
-                                "id": "b41f2f3d-3828-161c-8ea6-d7722d230907",
-                                "type": "Text",
-                                "parameters": {},
-                                "ports": [],
-                                "dynamicports": [],
-                                "children": []
                             }
                         ]
                     }
