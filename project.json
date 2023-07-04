@@ -4,7 +4,14 @@
         {
             "name": "/App",
             "graph": {
-                "connections": [],
+                "connections": [
+                    {
+                        "fromId": "246f9453-a119-ac78-171e-3806cf596ecc",
+                        "fromProperty": "didMount",
+                        "toId": "9762d04f-6d1e-80a1-56cd-ac88df313c5d",
+                        "toProperty": "run"
+                    }
+                ],
                 "roots": [
                     {
                         "id": "246f9453-a119-ac78-171e-3806cf596ecc",
@@ -37,9 +44,89 @@
                                 "ports": [],
                                 "dynamicports": [],
                                 "children": []
+                            },
+                            {
+                                "id": "d7e9fa67-e992-aaa4-f014-cdd97d14a85a",
+                                "type": "Radio Button Group",
+                                "parameters": {
+                                    "value": "1"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "a1a2d90c-5a15-92c6-32f7-e18dc49b30eb",
+                                        "type": "net.noodl.controls.radiobutton",
+                                        "parameters": {},
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "f99f6bf6-1b01-5223-039f-2487472eb302",
+                                        "type": "net.noodl.controls.radiobutton",
+                                        "parameters": {
+                                            "value": "1"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "ac1bc2ac-5ff2-87e1-ac06-27aa95ec24b6",
+                                "type": "Radio Button Group",
+                                "parameters": {
+                                    "value": "1"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "ffd6ff52-2854-0e46-1f13-aec99ccc2e1c",
+                                        "type": "net.noodl.controls.radiobutton",
+                                        "parameters": {},
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "7cc50ad0-dbfc-48d6-586b-e0fac81ce46a",
+                                        "type": "net.noodl.controls.radiobutton",
+                                        "parameters": {
+                                            "value": "1"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
                             }
                         ]
+                    },
+                    {
+                        "id": "9762d04f-6d1e-80a1-56cd-ac88df313c5d",
+                        "type": "JavaScriptFunction",
+                        "x": -96,
+                        "y": 152,
+                        "parameters": {
+                            "functionScript": "console.log(\"Hello from the Home component!\");"
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [],
+                        "metadata": {
+                            "merge": {
+                                "soureCodePorts": [
+                                    "functionScript"
+                                ]
+                            }
+                        }
                     }
+                ],
+                "visualRoots": [
+                    "246f9453-a119-ac78-171e-3806cf596ecc"
                 ]
             },
             "metadata": {
@@ -113,6 +200,9 @@
                         "dynamicports": [],
                         "children": []
                     }
+                ],
+                "visualRoots": [
+                    "04c6f934-42cc-1bc2-e3da-11d2f955b33d"
                 ]
             }
         },
@@ -120,7 +210,14 @@
             "name": "/Start Page",
             "id": "69559017-a17f-333b-c101-fbb0d1b4ce31",
             "graph": {
-                "connections": [],
+                "connections": [
+                    {
+                        "fromId": "a4b7e4d4-c01d-1267-30b6-c2b448b90067",
+                        "fromProperty": "didMount",
+                        "toId": "2a48785a-a030-f298-7fd4-9b1f505111b3",
+                        "toProperty": "run"
+                    }
+                ],
                 "roots": [
                     {
                         "id": "a4b7e4d4-c01d-1267-30b6-c2b448b90067",
@@ -165,7 +262,29 @@
                                 "children": []
                             }
                         ]
+                    },
+                    {
+                        "id": "2a48785a-a030-f298-7fd4-9b1f505111b3",
+                        "type": "JavaScriptFunction",
+                        "x": -20,
+                        "y": -139,
+                        "parameters": {
+                            "functionScript": "console.log(\"Hello from the Start page!\");"
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [],
+                        "metadata": {
+                            "merge": {
+                                "soureCodePorts": [
+                                    "functionScript"
+                                ]
+                            }
+                        }
                     }
+                ],
+                "visualRoots": [
+                    "a4b7e4d4-c01d-1267-30b6-c2b448b90067"
                 ]
             }
         }
