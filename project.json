@@ -29,6 +29,14 @@
                         "dynamicports": [],
                         "children": [
                             {
+                                "id": "6d8bf224-33db-db43-f1a6-6e8960ce390c",
+                                "type": "Text",
+                                "parameters": {},
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
                                 "id": "a24a02ae-c1b8-1250-72c3-a1d48cbc9558",
                                 "type": "Router",
                                 "parameters": {
