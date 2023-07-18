@@ -29,14 +29,6 @@
                         "dynamicports": [],
                         "children": [
                             {
-                                "id": "6d8bf224-33db-db43-f1a6-6e8960ce390c",
-                                "type": "Text",
-                                "parameters": {},
-                                "ports": [],
-                                "dynamicports": [],
-                                "children": []
-                            },
-                            {
                                 "id": "a24a02ae-c1b8-1250-72c3-a1d48cbc9558",
                                 "type": "Router",
                                 "parameters": {
@@ -44,7 +36,8 @@
                                     "pages": {
                                         "routes": [
                                             "/Start Page",
-                                            "/noodl-github-test"
+                                            "/noodl-github-test",
+                                            "/nested"
                                         ],
                                         "startPage": "/Start Page"
                                     }
@@ -52,64 +45,6 @@
                                 "ports": [],
                                 "dynamicports": [],
                                 "children": []
-                            },
-                            {
-                                "id": "d7e9fa67-e992-aaa4-f014-cdd97d14a85a",
-                                "type": "Radio Button Group",
-                                "parameters": {
-                                    "value": "1"
-                                },
-                                "ports": [],
-                                "dynamicports": [],
-                                "children": [
-                                    {
-                                        "id": "a1a2d90c-5a15-92c6-32f7-e18dc49b30eb",
-                                        "type": "net.noodl.controls.radiobutton",
-                                        "parameters": {},
-                                        "ports": [],
-                                        "dynamicports": [],
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "f99f6bf6-1b01-5223-039f-2487472eb302",
-                                        "type": "net.noodl.controls.radiobutton",
-                                        "parameters": {
-                                            "value": "1"
-                                        },
-                                        "ports": [],
-                                        "dynamicports": [],
-                                        "children": []
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "ac1bc2ac-5ff2-87e1-ac06-27aa95ec24b6",
-                                "type": "Radio Button Group",
-                                "parameters": {
-                                    "value": "1"
-                                },
-                                "ports": [],
-                                "dynamicports": [],
-                                "children": [
-                                    {
-                                        "id": "ffd6ff52-2854-0e46-1f13-aec99ccc2e1c",
-                                        "type": "net.noodl.controls.radiobutton",
-                                        "parameters": {},
-                                        "ports": [],
-                                        "dynamicports": [],
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "7cc50ad0-dbfc-48d6-586b-e0fac81ce46a",
-                                        "type": "net.noodl.controls.radiobutton",
-                                        "parameters": {
-                                            "value": "1"
-                                        },
-                                        "ports": [],
-                                        "dynamicports": [],
-                                        "children": []
-                                    }
-                                ]
                             }
                         ]
                     },
@@ -146,6 +81,78 @@
                     "x": 0,
                     "y": 0
                 }
+            }
+        },
+        {
+            "name": "/nested",
+            "id": "a53e5bed-0f87-5b1e-d9e7-4ec9f32a763f",
+            "graph": {
+                "connections": [],
+                "roots": [
+                    {
+                        "id": "4cdfdc62-2e57-1296-0d9b-4c31cabd60c2",
+                        "type": "Page",
+                        "x": 0,
+                        "y": 0,
+                        "parameters": {
+                            "urlPath": "nested/test"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "title",
+                                "displayName": "Title",
+                                "type": "string",
+                                "group": "General",
+                                "plug": "input",
+                                "default": "nested",
+                                "index": 31
+                            },
+                            {
+                                "name": "urlPath",
+                                "displayName": "Url Path",
+                                "type": "string",
+                                "group": "General",
+                                "plug": "input",
+                                "default": "nested",
+                                "index": 32
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": "859c685d-ce23-6c57-4e09-f64100ca5709",
+                                "type": "Text",
+                                "parameters": {},
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "e1379196-5344-1c50-d28e-25684bf6c30a",
+                                "type": "Image",
+                                "parameters": {
+                                    "src": "Screenshot 2023-07-18 at 09.32.26.png"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "6d2a7600-cd00-a41c-9638-8bbacd18ab52",
+                        "type": "PageInputs",
+                        "x": -306,
+                        "y": 0,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    }
+                ],
+                "visualRoots": [
+                    "4cdfdc62-2e57-1296-0d9b-4c31cabd60c2"
+                ]
             }
         },
         {
@@ -264,6 +271,16 @@
                                     "textAlignX": "center",
                                     "textStyle": "Display",
                                     "text": "Hello World!!!"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "95aaf964-5107-f5a0-e7f8-2493860a090d",
+                                "type": "Image",
+                                "parameters": {
+                                    "src": "Screenshot 2023-07-18 at 09.32.26.png"
                                 },
                                 "ports": [],
                                 "dynamicports": [],
