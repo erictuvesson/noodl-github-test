@@ -37,7 +37,9 @@
                                         "routes": [
                                             "/Start Page",
                                             "/noodl-github-test",
-                                            "/nested"
+                                            "/nested",
+                                            "/video",
+                                            "/Select"
                                         ],
                                         "startPage": "/Start Page"
                                     }
@@ -66,6 +68,94 @@
                                 ]
                             }
                         }
+                    },
+                    {
+                        "id": "b5f95e53-0d74-ec68-86c3-99873056f2e0",
+                        "type": "JavaScriptFunction",
+                        "label": "Get Current Location",
+                        "x": -464,
+                        "y": 160,
+                        "parameters": {
+                            "functionScript": "\n// Check if geolocation is supported by the browser\nif (\"geolocation\" in navigator) {\n  // Get the current location of the device\n  navigator.geolocation.getCurrentPosition(\n    (position) => {\n      // Extract latitude and longitude from the position object\n      const latitude = position.coords.latitude;\n      const longitude = position.coords.longitude;\n\n      // Send the latitude and longitude to the outputs\n      Outputs.Latitude = latitude;\n      Outputs.Longitude = longitude;\n\n      // Signal success\n      Outputs.Success();\n    },\n    (error) => {\n      // Send the error to the outputs\n      Outputs.Error = error;\n\n      // Signal failure\n      Outputs.Failure();\n    }\n  );\n} else {\n  // Geolocation is not supported, send an error to the outputs\n  Outputs.Error = \"Geolocation is not supported by this browser\";\n\n  // Signal failure\n  Outputs.Failure();\n}\n"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "out-Success",
+                                "displayName": "Success",
+                                "plug": "output",
+                                "type": "signal",
+                                "group": "Outputs",
+                                "index": 4
+                            },
+                            {
+                                "name": "out-Failure",
+                                "displayName": "Failure",
+                                "plug": "output",
+                                "type": "signal",
+                                "group": "Outputs",
+                                "index": 5
+                            },
+                            {
+                                "name": "out-Latitude",
+                                "displayName": "Latitude",
+                                "plug": "output",
+                                "type": "*",
+                                "group": "Outputs",
+                                "index": 6
+                            },
+                            {
+                                "name": "out-Longitude",
+                                "displayName": "Longitude",
+                                "plug": "output",
+                                "type": "*",
+                                "group": "Outputs",
+                                "index": 7
+                            },
+                            {
+                                "name": "out-Error",
+                                "displayName": "Error",
+                                "plug": "output",
+                                "type": "*",
+                                "group": "Outputs",
+                                "index": 8
+                            }
+                        ],
+                        "children": [],
+                        "metadata": {
+                            "prompt": {
+                                "history": [
+                                    {
+                                        "content": "Get the current location of the device",
+                                        "metadata": {
+                                            "user": {
+                                                "id": "ecb197a9-7aeb-4831-bb50-e06bc301c84f",
+                                                "email": "eric@noodl.net",
+                                                "name": "Eric Tuvesson"
+                                            },
+                                            "code": "\n// Check if geolocation is supported by the browser\nif (\"geolocation\" in navigator) {\n  // Get the current location of the device\n  navigator.geolocation.getCurrentPosition(\n    (position) => {\n      // Extract latitude and longitude from the position object\n      const latitude = position.coords.latitude;\n      const longitude = position.coords.longitude;\n\n      // Send the latitude and longitude to the outputs\n      Outputs.Latitude = latitude;\n      Outputs.Longitude = longitude;\n\n      // Signal success\n      Outputs.Success();\n    },\n    (error) => {\n      // Send the error to the outputs\n      Outputs.Error = error;\n\n      // Signal failure\n      Outputs.Failure();\n    }\n  );\n} else {\n  // Geolocation is not supported, send an error to the outputs\n  Outputs.Error = \"Geolocation is not supported by this browser\";\n\n  // Signal failure\n  Outputs.Failure();\n}\n"
+                                        },
+                                        "snowflakeId": "01896ebae257-hzwm0d",
+                                        "type": "user"
+                                    },
+                                    {
+                                        "type": "assistant",
+                                        "content": "\nThis function checks if the browser supports geolocation. If it does, it retrieves the current location of the device using the `getCurrentPosition` method. \n\nIf the location is successfully retrieved, it extracts the latitude and longitude from the `position` object and sends them to the `Outputs.Latitude` and `Outputs.Longitude` properties. It then triggers the `Outputs.Success` output signal.\n\nIf there is an error retrieving the location, it sends the error message to the `Outputs.Error` property and triggers the `Outputs.Failure` output signal.\n\nIf geolocation is not supported by the browser, it sends an error message to the `Outputs.Error` property and triggers the `Outputs.Failure` output signal.\n",
+                                        "snowflakeId": "01896ebb072d-6edvr9",
+                                        "metadata": {}
+                                    }
+                                ],
+                                "metadata": {
+                                    "templateId": "function"
+                                }
+                            },
+                            "AiAssistant": "old",
+                            "merge": {
+                                "soureCodePorts": [
+                                    "functionScript"
+                                ]
+                            }
+                        }
                     }
                 ],
                 "visualRoots": [
@@ -87,7 +177,14 @@
             "name": "/nested",
             "id": "a53e5bed-0f87-5b1e-d9e7-4ec9f32a763f",
             "graph": {
-                "connections": [],
+                "connections": [
+                    {
+                        "fromId": "6d2a7600-cd00-a41c-9638-8bbacd18ab52",
+                        "fromProperty": "pm-test",
+                        "toId": "859c685d-ce23-6c57-4e09-f64100ca5709",
+                        "toProperty": "text"
+                    }
+                ],
                 "roots": [
                     {
                         "id": "4cdfdc62-2e57-1296-0d9b-4c31cabd60c2",
@@ -144,9 +241,20 @@
                         "type": "PageInputs",
                         "x": -306,
                         "y": 0,
-                        "parameters": {},
+                        "parameters": {
+                            "queryParams": "test"
+                        },
                         "ports": [],
-                        "dynamicports": [],
+                        "dynamicports": [
+                            {
+                                "name": "pm-test",
+                                "displayName": "test",
+                                "type": "*",
+                                "plug": "output",
+                                "group": "Parameters",
+                                "index": 2
+                            }
+                        ],
                         "children": []
                     }
                 ],
@@ -222,6 +330,84 @@
             }
         },
         {
+            "name": "/Select",
+            "id": "2b177b56-c970-1b18-bb11-f19cc0f84278",
+            "graph": {
+                "connections": [],
+                "roots": [
+                    {
+                        "id": "f913feef-4acd-978a-3cfa-fa0eee0fa547",
+                        "type": "Page",
+                        "x": 0,
+                        "y": 0,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "title",
+                                "displayName": "Title",
+                                "type": "string",
+                                "group": "General",
+                                "plug": "input",
+                                "default": "Select",
+                                "index": 31
+                            },
+                            {
+                                "name": "urlPath",
+                                "displayName": "Url Path",
+                                "type": "string",
+                                "group": "General",
+                                "plug": "input",
+                                "default": "select",
+                                "index": 32
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": "df2794a5-2b02-a8d5-2d54-ef172bedafda",
+                                "type": "Group",
+                                "parameters": {
+                                    "paddingLeft": {
+                                        "value": 16,
+                                        "unit": "px"
+                                    },
+                                    "paddingRight": {
+                                        "value": 16,
+                                        "unit": "px"
+                                    },
+                                    "paddingTop": {
+                                        "value": 16,
+                                        "unit": "px"
+                                    },
+                                    "paddingBottom": {
+                                        "value": 16,
+                                        "unit": "px"
+                                    }
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "5a4bb278-5dd3-6789-e0ff-b91d30b404d2",
+                                        "type": "net.noodl.controls.options",
+                                        "parameters": {
+                                            "items": "[\n    {\"Label\":\"Option 1\", \"Value\":\"1\"},\n    {\"Label\":\"Option 2\", \"Value\":\"2\"},\n    {\"Label\":\"Option 3\", \"Value\":\"3\"}\n]"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "visualRoots": [
+                    "f913feef-4acd-978a-3cfa-fa0eee0fa547"
+                ]
+            }
+        },
+        {
             "name": "/Start Page",
             "id": "69559017-a17f-333b-c101-fbb0d1b4ce31",
             "graph": {
@@ -231,6 +417,18 @@
                         "fromProperty": "didMount",
                         "toId": "2a48785a-a030-f298-7fd4-9b1f505111b3",
                         "toProperty": "run"
+                    },
+                    {
+                        "fromId": "67d4ae2b-22da-a217-875c-e1b24de97da4",
+                        "fromProperty": "pm-test",
+                        "toId": "fcfbc04f-65ce-bf80-9c09-6cdca911f3fe",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "ad048458-1eea-1e42-1493-6070a7efc260",
+                        "fromProperty": "onClick",
+                        "toId": "04c3c170-7ab8-b050-3cb5-470c121e23a2",
+                        "toProperty": "navigate"
                     }
                 ],
                 "roots": [
@@ -271,7 +469,8 @@
                                     "text": "Hello World!!!"
                                 },
                                 "ports": [],
-                                "dynamicports": []
+                                "dynamicports": [],
+                                "children": []
                             },
                             {
                                 "id": "ecbf5b06-8e07-9f0f-675f-8e0e6b5d7aa5",
@@ -309,7 +508,8 @@
                                             "startValue": "0"
                                         },
                                         "ports": [],
-                                        "dynamicports": []
+                                        "dynamicports": [],
+                                        "children": []
                                     },
                                     {
                                         "id": "5fc7ac90-b8a9-beec-d1c4-514a7f480dfe",
@@ -320,7 +520,8 @@
                                             "startValue": "0"
                                         },
                                         "ports": [],
-                                        "dynamicports": []
+                                        "dynamicports": [],
+                                        "children": []
                                     },
                                     {
                                         "id": "31dcfd0e-cabb-c90e-ee8c-a8ab563d1697",
@@ -332,7 +533,8 @@
                                             "useLabel": true
                                         },
                                         "ports": [],
-                                        "dynamicports": []
+                                        "dynamicports": [],
+                                        "children": []
                                     },
                                     {
                                         "id": "b302d18a-b425-3ddf-ca8a-4719ac25e138",
@@ -367,7 +569,8 @@
                                             "cssClassName": "TextInput_Number_Right"
                                         },
                                         "ports": [],
-                                        "dynamicports": []
+                                        "dynamicports": [],
+                                        "children": []
                                     }
                                 ]
                             },
@@ -378,7 +581,8 @@
                                     "src": "Screenshot 2023-07-18 at 09.32.26.png"
                                 },
                                 "ports": [],
-                                "dynamicports": []
+                                "dynamicports": [],
+                                "children": []
                             },
                             {
                                 "id": "d3f3631f-2798-38f3-4859-4d0d275f5f80",
@@ -392,7 +596,16 @@
                                     }
                                 },
                                 "ports": [],
-                                "dynamicports": []
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "ad048458-1eea-1e42-1493-6070a7efc260",
+                                "type": "net.noodl.controls.button",
+                                "parameters": {},
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
                             }
                         ]
                     },
@@ -406,6 +619,7 @@
                         },
                         "ports": [],
                         "dynamicports": [],
+                        "children": [],
                         "metadata": {
                             "merge": {
                                 "soureCodePorts": [
@@ -417,13 +631,14 @@
                     {
                         "id": "7bf5a9f3-eeb8-9625-3b15-3c7ea708a879",
                         "type": "CSS Definition",
-                        "x": -1.6666666666666288,
-                        "y": 509.16666666666663,
+                        "x": -159.99882822657239,
+                        "y": 423.9994706816585,
                         "parameters": {
                             "style": ".TextInput_Number_Right {\r\n    text-align: right;\r\n\r\n    -webkit-appearance: textfield;\r\n    -moz-appearance: textfield;\r\n    appearance: textfield;\r\n}\r\n\r\n/* https://stackoverflow.com/a/45396364 */\r\n.TextInput_Number_Right::-webkit-inner-spin-button, \r\n.TextInput_Number_Right::-webkit-outer-spin-button { \r\n  -webkit-appearance: none;\r\n}"
                         },
                         "ports": [],
                         "dynamicports": [],
+                        "children": [],
                         "metadata": {
                             "merge": {
                                 "soureCodePorts": [
@@ -431,12 +646,232 @@
                                 ]
                             }
                         }
+                    },
+                    {
+                        "id": "67d4ae2b-22da-a217-875c-e1b24de97da4",
+                        "type": "PageInputs",
+                        "x": -337.22222222222223,
+                        "y": -16.611111111111086,
+                        "parameters": {
+                            "queryParams": "test"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "pm-test",
+                                "displayName": "test",
+                                "type": "*",
+                                "plug": "output",
+                                "group": "Parameters",
+                                "index": 2
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "04c3c170-7ab8-b050-3cb5-470c121e23a2",
+                        "type": "RouterNavigate",
+                        "x": 240.7687590179848,
+                        "y": 522.296401121469,
+                        "parameters": {
+                            "router": "Main",
+                            "target": "/nested"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "component",
+                                    "title": "Choose page component",
+                                    "components": [
+                                        "/Start Page",
+                                        "/noodl-github-test",
+                                        "/nested",
+                                        "/video",
+                                        "/Select"
+                                    ],
+                                    "allowEditOnly": true
+                                },
+                                "group": "General",
+                                "displayName": "Target Page",
+                                "name": "target",
+                                "index": 3
+                            },
+                            {
+                                "name": "pm-test",
+                                "displayName": "test",
+                                "type": "string",
+                                "plug": "input",
+                                "group": "Parameters",
+                                "index": 4
+                            }
+                        ],
+                        "children": []
                     }
                 ],
                 "visualRoots": [
                     "a4b7e4d4-c01d-1267-30b6-c2b448b90067"
+                ]
+            }
+        },
+        {
+            "name": "/video",
+            "id": "5ad29b0f-aac8-bec9-3f98-fec6b9bed827",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "c365a1f7-abf6-32d7-f423-c37dc0a60892",
+                        "fromProperty": "onClick",
+                        "toId": "e68e0205-516c-26a2-9fc5-6ee373067cbd",
+                        "toProperty": "flip"
+                    },
+                    {
+                        "fromId": "e68e0205-516c-26a2-9fc5-6ee373067cbd",
+                        "fromProperty": "state",
+                        "toId": "5f62aa75-9231-6429-35c3-0848614dfa22",
+                        "toProperty": "value"
+                    },
+                    {
+                        "fromId": "5f62aa75-9231-6429-35c3-0848614dfa22",
+                        "fromProperty": "result",
+                        "toId": "dcc57404-86c5-2037-e9af-9f7b412c0305",
+                        "toProperty": "src"
+                    },
+                    {
+                        "fromId": "e68e0205-516c-26a2-9fc5-6ee373067cbd",
+                        "fromProperty": "state",
+                        "toId": "c365a1f7-abf6-32d7-f423-c37dc0a60892",
+                        "toProperty": "label"
+                    }
                 ],
-                "comments": []
+                "roots": [
+                    {
+                        "id": "6de6c870-903d-828d-75a5-7a81a392ca3c",
+                        "type": "Page",
+                        "x": 0,
+                        "y": 0,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "title",
+                                "displayName": "Title",
+                                "type": "string",
+                                "group": "General",
+                                "plug": "input",
+                                "default": "video",
+                                "index": 31
+                            },
+                            {
+                                "name": "urlPath",
+                                "displayName": "Url Path",
+                                "type": "string",
+                                "group": "General",
+                                "plug": "input",
+                                "default": "video",
+                                "index": 32
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": "1ef2570a-ebc8-955f-93df-6913bef05f4c",
+                                "type": "Group",
+                                "parameters": {
+                                    "sizeMode": "contentHeight",
+                                    "maxWidth": {
+                                        "value": 800,
+                                        "unit": "px"
+                                    },
+                                    "alignX": "center"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "dcc57404-86c5-2037-e9af-9f7b412c0305",
+                                        "type": "Video",
+                                        "parameters": {
+                                            "src": "sample-5s.mp4",
+                                            "sizeMode": "contentHeight",
+                                            "controls": true
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "c365a1f7-abf6-32d7-f423-c37dc0a60892",
+                                        "type": "net.noodl.controls.button",
+                                        "parameters": {
+                                            "sizeMode": "explicit",
+                                            "marginTop": {
+                                                "value": 16,
+                                                "unit": "px"
+                                            },
+                                            "marginRight": {
+                                                "value": 16,
+                                                "unit": "px"
+                                            },
+                                            "marginLeft": {
+                                                "value": 16,
+                                                "unit": "px"
+                                            }
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "5f62aa75-9231-6429-35c3-0848614dfa22",
+                        "type": "Expression",
+                        "x": -280,
+                        "y": -26,
+                        "parameters": {
+                            "expression": "value ? 'sample-5s.mp4' : 'sample-10s.mp4'"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "group": "Parameters",
+                                "name": "value",
+                                "type": {
+                                    "name": "*",
+                                    "editAsType": "string"
+                                },
+                                "plug": "input",
+                                "index": 7
+                            }
+                        ],
+                        "children": [],
+                        "metadata": {
+                            "merge": {
+                                "soureCodePorts": [
+                                    "expression"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "id": "e68e0205-516c-26a2-9fc5-6ee373067cbd",
+                        "type": "Switch",
+                        "x": -304,
+                        "y": 202,
+                        "parameters": {
+                            "onFromStart": true
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    }
+                ],
+                "visualRoots": [
+                    "6de6c870-903d-828d-75a5-7a81a392ca3c"
+                ]
             }
         }
     ],
