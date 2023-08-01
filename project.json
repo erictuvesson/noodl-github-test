@@ -1073,7 +1073,8 @@
     "settings": {
         "bodyScroll": true,
         "baseUrl": "https://erictuvesson.github.io/noodl-github-test/",
-        "sitemap.enabled": true
+        "sitemap.enabled": true,
+        "navigationPathType": "path"
     },
     "rootNodeId": "246f9453-a119-ac78-171e-3806cf596ecc",
     "version": "4",
