@@ -1,0 +1,40 @@
+{
+    "__comment": "This is required for SSR to quickly understand what pages exist.",
+    "pages": [
+        {
+            "kind": "static-page",
+            "componentName": "/Start Page",
+            "title": "Start Page",
+            "path": "/start-page",
+            "meta": {}
+        },
+        {
+            "kind": "static-page",
+            "componentName": "/noodl-github-test",
+            "title": "noodl-github-test",
+            "path": "/noodl-github-test",
+            "meta": {}
+        },
+        {
+            "kind": "static-page",
+            "componentName": "/nested",
+            "title": "nested/test",
+            "path": "/nested/test",
+            "meta": {}
+        },
+        {
+            "kind": "static-page",
+            "componentName": "/video",
+            "title": "video",
+            "path": "/video",
+            "meta": {}
+        },
+        {
+            "kind": "static-page",
+            "componentName": "/Select",
+            "title": "Select",
+            "path": "/select",
+            "meta": {}
+        }
+    ]
+}
