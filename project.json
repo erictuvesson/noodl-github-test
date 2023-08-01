@@ -68,94 +68,6 @@
                                 ]
                             }
                         }
-                    },
-                    {
-                        "id": "b5f95e53-0d74-ec68-86c3-99873056f2e0",
-                        "type": "JavaScriptFunction",
-                        "label": "Get Current Location",
-                        "x": -464,
-                        "y": 160,
-                        "parameters": {
-                            "functionScript": "\n// Check if geolocation is supported by the browser\nif (\"geolocation\" in navigator) {\n  // Get the current location of the device\n  navigator.geolocation.getCurrentPosition(\n    (position) => {\n      // Extract latitude and longitude from the position object\n      const latitude = position.coords.latitude;\n      const longitude = position.coords.longitude;\n\n      // Send the latitude and longitude to the outputs\n      Outputs.Latitude = latitude;\n      Outputs.Longitude = longitude;\n\n      // Signal success\n      Outputs.Success();\n    },\n    (error) => {\n      // Send the error to the outputs\n      Outputs.Error = error;\n\n      // Signal failure\n      Outputs.Failure();\n    }\n  );\n} else {\n  // Geolocation is not supported, send an error to the outputs\n  Outputs.Error = \"Geolocation is not supported by this browser\";\n\n  // Signal failure\n  Outputs.Failure();\n}\n"
-                        },
-                        "ports": [],
-                        "dynamicports": [
-                            {
-                                "name": "out-Success",
-                                "displayName": "Success",
-                                "plug": "output",
-                                "type": "signal",
-                                "group": "Outputs",
-                                "index": 4
-                            },
-                            {
-                                "name": "out-Failure",
-                                "displayName": "Failure",
-                                "plug": "output",
-                                "type": "signal",
-                                "group": "Outputs",
-                                "index": 5
-                            },
-                            {
-                                "name": "out-Latitude",
-                                "displayName": "Latitude",
-                                "plug": "output",
-                                "type": "*",
-                                "group": "Outputs",
-                                "index": 6
-                            },
-                            {
-                                "name": "out-Longitude",
-                                "displayName": "Longitude",
-                                "plug": "output",
-                                "type": "*",
-                                "group": "Outputs",
-                                "index": 7
-                            },
-                            {
-                                "name": "out-Error",
-                                "displayName": "Error",
-                                "plug": "output",
-                                "type": "*",
-                                "group": "Outputs",
-                                "index": 8
-                            }
-                        ],
-                        "children": [],
-                        "metadata": {
-                            "prompt": {
-                                "history": [
-                                    {
-                                        "content": "Get the current location of the device",
-                                        "metadata": {
-                                            "user": {
-                                                "id": "ecb197a9-7aeb-4831-bb50-e06bc301c84f",
-                                                "email": "eric@noodl.net",
-                                                "name": "Eric Tuvesson"
-                                            },
-                                            "code": "\n// Check if geolocation is supported by the browser\nif (\"geolocation\" in navigator) {\n  // Get the current location of the device\n  navigator.geolocation.getCurrentPosition(\n    (position) => {\n      // Extract latitude and longitude from the position object\n      const latitude = position.coords.latitude;\n      const longitude = position.coords.longitude;\n\n      // Send the latitude and longitude to the outputs\n      Outputs.Latitude = latitude;\n      Outputs.Longitude = longitude;\n\n      // Signal success\n      Outputs.Success();\n    },\n    (error) => {\n      // Send the error to the outputs\n      Outputs.Error = error;\n\n      // Signal failure\n      Outputs.Failure();\n    }\n  );\n} else {\n  // Geolocation is not supported, send an error to the outputs\n  Outputs.Error = \"Geolocation is not supported by this browser\";\n\n  // Signal failure\n  Outputs.Failure();\n}\n"
-                                        },
-                                        "snowflakeId": "01896ebae257-hzwm0d",
-                                        "type": "user"
-                                    },
-                                    {
-                                        "type": "assistant",
-                                        "content": "\nThis function checks if the browser supports geolocation. If it does, it retrieves the current location of the device using the `getCurrentPosition` method. \n\nIf the location is successfully retrieved, it extracts the latitude and longitude from the `position` object and sends them to the `Outputs.Latitude` and `Outputs.Longitude` properties. It then triggers the `Outputs.Success` output signal.\n\nIf there is an error retrieving the location, it sends the error message to the `Outputs.Error` property and triggers the `Outputs.Failure` output signal.\n\nIf geolocation is not supported by the browser, it sends an error message to the `Outputs.Error` property and triggers the `Outputs.Failure` output signal.\n",
-                                        "snowflakeId": "01896ebb072d-6edvr9",
-                                        "metadata": {}
-                                    }
-                                ],
-                                "metadata": {
-                                    "templateId": "function"
-                                }
-                            },
-                            "AiAssistant": "old",
-                            "merge": {
-                                "soureCodePorts": [
-                                    "functionScript"
-                                ]
-                            }
-                        }
                     }
                 ],
                 "visualRoots": [
@@ -333,7 +245,68 @@
             "name": "/Select",
             "id": "2b177b56-c970-1b18-bb11-f19cc0f84278",
             "graph": {
-                "connections": [],
+                "connections": [
+                    {
+                        "fromId": "6f3b3705-9c4f-ea17-4626-7cd0a9b5b6cf",
+                        "fromProperty": "value",
+                        "toId": "e3e4a032-b2e1-ca86-12ee-371229eec9cb",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "6f3b3705-9c4f-ea17-4626-7cd0a9b5b6cf",
+                        "fromProperty": "valuePercent",
+                        "toId": "693ec334-9d39-d8e0-4563-405191076b4a",
+                        "toProperty": "value"
+                    },
+                    {
+                        "fromId": "693ec334-9d39-d8e0-4563-405191076b4a",
+                        "fromProperty": "formatted",
+                        "toId": "24c8b24c-9f39-9bf6-eb46-add3f8e5f352",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "5a4bb278-5dd3-6789-e0ff-b91d30b404d2",
+                        "fromProperty": "value",
+                        "toId": "9891c325-7ffa-020b-f074-7b89ad56d0d7",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "2f67d332-af05-c9bb-041b-3d0a9501d9b2",
+                        "fromProperty": "value",
+                        "toId": "aadc268a-81ff-4779-f85d-2bf4eb8e0559",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "a5b27bbb-8422-6a5b-a657-38f697867ecc",
+                        "fromProperty": "onClick",
+                        "toId": "ed28cbf6-5799-ffb2-38d2-e9d49c3a1159",
+                        "toProperty": "flip"
+                    },
+                    {
+                        "fromId": "ed28cbf6-5799-ffb2-38d2-e9d49c3a1159",
+                        "fromProperty": "state",
+                        "toId": "2f67d332-af05-c9bb-041b-3d0a9501d9b2",
+                        "toProperty": "mounted"
+                    },
+                    {
+                        "fromId": "db7bff39-6f5a-9c81-a6b5-079fceb3e1e6",
+                        "fromProperty": "onTextChanged",
+                        "toId": "fa975c59-afae-0620-d327-279620a645bf",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "6282bb26-acd0-9aed-cd64-57619e78023d",
+                        "fromProperty": "onClick",
+                        "toId": "0797344d-165d-742a-a1ff-3695e3e20539",
+                        "toProperty": "flip"
+                    },
+                    {
+                        "fromId": "0797344d-165d-742a-a1ff-3695e3e20539",
+                        "fromProperty": "state",
+                        "toId": "db7bff39-6f5a-9c81-a6b5-079fceb3e1e6",
+                        "toProperty": "mounted"
+                    }
+                ],
                 "roots": [
                     {
                         "id": "f913feef-4acd-978a-3cfa-fa0eee0fa547",
@@ -396,10 +369,232 @@
                                         "ports": [],
                                         "dynamicports": [],
                                         "children": []
+                                    },
+                                    {
+                                        "id": "4246a5d6-c42f-fd3e-1c29-8711ce13e3fa",
+                                        "type": "Group",
+                                        "parameters": {
+                                            "marginBottom": {
+                                                "value": 16,
+                                                "unit": "px"
+                                            },
+                                            "sizeMode": "contentHeight"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": [
+                                            {
+                                                "id": "9891c325-7ffa-020b-f074-7b89ad56d0d7",
+                                                "type": "Text",
+                                                "parameters": {
+                                                    "width": {
+                                                        "value": 50,
+                                                        "unit": "%"
+                                                    }
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "2f67d332-af05-c9bb-041b-3d0a9501d9b2",
+                                        "type": "net.noodl.controls.options",
+                                        "parameters": {
+                                            "items": "[\n    {\"Label\":\"Option 1\", \"Value\":\"1\"},\n    {\"Label\":\"Option 2\", \"Value\":\"2\"},\n    {\"Label\":\"Option 3\", \"Value\":\"3\"}\n]",
+                                            "value": "1"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "2a8f7d97-be3b-ead7-239e-f92e6d55df08",
+                                        "type": "Group",
+                                        "parameters": {
+                                            "marginBottom": {
+                                                "value": 16,
+                                                "unit": "px"
+                                            },
+                                            "sizeMode": "contentHeight"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": [
+                                            {
+                                                "id": "aadc268a-81ff-4779-f85d-2bf4eb8e0559",
+                                                "type": "Text",
+                                                "parameters": {
+                                                    "width": {
+                                                        "value": 50,
+                                                        "unit": "%"
+                                                    }
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "a5b27bbb-8422-6a5b-a657-38f697867ecc",
+                                        "type": "net.noodl.controls.button",
+                                        "parameters": {
+                                            "label": "Toggle Mount",
+                                            "marginBottom": {
+                                                "value": 16,
+                                                "unit": "px"
+                                            }
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "db7bff39-6f5a-9c81-a6b5-079fceb3e1e6",
+                                        "type": "net.noodl.controls.textinput",
+                                        "parameters": {},
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "d93bae33-6c47-2969-72dc-6653730e0272",
+                                        "type": "Group",
+                                        "parameters": {
+                                            "marginBottom": {
+                                                "value": 16,
+                                                "unit": "px"
+                                            },
+                                            "sizeMode": "contentHeight"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": [
+                                            {
+                                                "id": "fa975c59-afae-0620-d327-279620a645bf",
+                                                "type": "Text",
+                                                "parameters": {
+                                                    "width": {
+                                                        "value": 50,
+                                                        "unit": "%"
+                                                    }
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "6282bb26-acd0-9aed-cd64-57619e78023d",
+                                        "type": "net.noodl.controls.button",
+                                        "parameters": {
+                                            "label": "Toggle Mount"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "6f3b3705-9c4f-ea17-4626-7cd0a9b5b6cf",
+                                        "type": "net.noodl.controls.range",
+                                        "parameters": {
+                                            "marginTop": {
+                                                "value": 16,
+                                                "unit": "px"
+                                            },
+                                            "max": 500
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "f7db8fa1-a8c2-635c-3af0-dbb5e6c69b5f",
+                                        "type": "Group",
+                                        "parameters": {
+                                            "sizeMode": "contentHeight",
+                                            "flexDirection": "row"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": [
+                                            {
+                                                "id": "e3e4a032-b2e1-ca86-12ee-371229eec9cb",
+                                                "type": "Text",
+                                                "parameters": {
+                                                    "width": {
+                                                        "value": 50,
+                                                        "unit": "%"
+                                                    }
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            },
+                                            {
+                                                "id": "24c8b24c-9f39-9bf6-eb46-add3f8e5f352",
+                                                "type": "Text",
+                                                "parameters": {
+                                                    "width": {
+                                                        "value": 50,
+                                                        "unit": "%"
+                                                    }
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            }
+                                        ]
                                     }
                                 ]
                             }
                         ]
+                    },
+                    {
+                        "id": "693ec334-9d39-d8e0-4563-405191076b4a",
+                        "type": "String Format",
+                        "x": -261.13605443789515,
+                        "y": 1032.9149644946995,
+                        "parameters": {
+                            "format": "{value} %"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "value",
+                                "type": "string",
+                                "plug": "input",
+                                "index": 2
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "ed28cbf6-5799-ffb2-38d2-e9d49c3a1159",
+                        "type": "Switch",
+                        "x": -256,
+                        "y": 360,
+                        "parameters": {
+                            "onFromStart": true
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "0797344d-165d-742a-a1ff-3695e3e20539",
+                        "type": "Switch",
+                        "x": -275.70408165684273,
+                        "y": 722.119047336835,
+                        "parameters": {
+                            "onFromStart": true
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
                     }
                 ],
                 "visualRoots": [
